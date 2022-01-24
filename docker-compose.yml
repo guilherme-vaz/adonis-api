@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  database:
+  # DB que vamos usar
+    image: mysql
+    container_name: bootcamp_cataline
+    # Sem esse comando não conseguimos nos autenticar no banco de dados
+    command: --default-authentication-plugin=mysql_native_password
+    # Sempre que tiver um problema o container vai ser reiniciado (restartado)
+    restart: always
+    # Especificando algumas coisas do banco de dados
+    environment: 
+      MYSQL_ROOT_PASSWORD: 'secret'
+      MYSQL_DATABASE: 'adonis'
+    ports:
+      - '3306:3306'
+
+# Servicço de banco de dados
+
+# user -> root 
+# password -> 'secret'
+
+# Para subir/rodar esse arquivo e deixar ele rodando em background usamos o comando: docker-compose up -d
